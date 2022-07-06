@@ -1,0 +1,36 @@
+
+\blankpage
+\begin{small}
+\chapter*{Table of contents}
+\makeatletter
+\renewcommand\tableofcontents{%
+    \@starttoc{toc}%
+}
+\makeatother
+\addcontentsline{toc}{chapter}{Table of contents}
+\tableofcontents
+\end{small}
+
+\blankpage
+\begin{small}
+\chapter*{List of figures}
+\makeatletter
+\renewcommand\listoffigures{%
+    \@starttoc{lof}%
+}
+\makeatother
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+\end{small}
+
+\blankpage
+\begin{small}
+\chapter*{List of tables}
+\makeatletter
+\renewcommand\listoftables{%
+    \@starttoc{lot}%
+}
+\makeatother
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+\end{small}

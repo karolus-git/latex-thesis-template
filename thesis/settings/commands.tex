@@ -1,0 +1,63 @@
+% Shortcut to create a figure with size, filename, extension, label, position and credit. The figure is always to store in the figs folder of the current section
+\newcommand{\MyFigure}[5]{
+\begin{figure}[#5]
+	\begin{center}
+		\includegraphics[width=#1\textwidth]{figs/#2.#3}
+		\caption{#4}
+		\label{fig:#2}
+	\end{center}
+\end{figure}
+}
+
+% Renamings
+\newtheorem*{remark}{My comment} % Comment
+\renewcommand{\nomname}{My acronyms and my notations} % Nomenclature
+\renewcommand{\listalgorithmname}{The list of algorithms} % Algorithms
+
+% Add an acronym to the notation table
+\newcommand{\MyAcronym}[2]{\nomenclature[A]{#1}{#2}{}}
+
+% Shortcut to print the absolute value and normal value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lVert#1\right\rVert}
+
+% Construct two columns in the nomenclature
+\renewcommand{\nompreamble}{\begin{multicols}{2}}
+\renewcommand{\nompostamble}{\end{multicols}}
+
+%Create a paragraph title, underlined and bold
+\newcommand{\MyParagraph}[1]{\paragraph{\underline{#1}}\mbox{}\par}
+
+% A description of the variables of an equation with units
+\newenvironment{MyNotation}[1]
+  {\noindent#1  : \small \par \begin{tabular}{rll}}
+  {\end{tabular}\vspace{\baselineskip}}
+
+\newcommand{\MyNotationItem}[3]
+{
+   $#1$ & #2 & in \si{#3}
+}
+
+% Add bib files
+\addbibresource{biblio/bib-p1.bib}
+\addbibresource{biblio/bib-p2.bib}
+
+% Modify the font size in bib
+\renewcommand*{\bibfont}{\small}
+
+% Translations of the commands of algorithmic
+% \newcommand{\algorithmicfor}{\textbf{Pour}}
+% \newcommand{\algorithmicforall}{\textbf{Pour tous}}
+% \newcommand{\algorithmicrepeat}{\textbf{Répéter}}
+% \newcommand{\algorithmicuntil}{\textbf{Tant que}}
+% \newcommand{\algorithmicwhile}{\textbf{Tant que}}
+% \newcommand{\algorithmicif}{\textbf{Si}}
+% \newcommand{\algorithmicthen}{\textbf{ :}}
+% \newcommand{\algorithmicdo}{\textbf{ :}}
+% \newcommand{\algorithmicrequire}{\textbf{Nécessite}}
+% \newcommand{\algorithmictrue}{vrai}
+% \newcommand{\algorithmicelse}{\textbf{Sinon}}
+% \newcommand{\algorithmicelseif}{\textbf{Sinon si}}
+% \newcommand{\algorithmicend}{\textbf{Fin de boucle}}
+% \newcommand{\algorithmicendif}{\textbf{Fin de boucle}}
+% \newcommand{\algorithmicreturn}{\textbf{Renvoyer}}

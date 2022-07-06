@@ -1,0 +1,38 @@
+% !TEX root = /home/charly/These/Manuscrit_V0.2/thesis.tex
+\documentclass[a4paper,twoside,11pt]{report}
+
+% Import the packages, the style and the commands
+\input{settings/packages}
+\input{settings/commands}
+\input{settings/styles}
+
+% Build the list of contents, figures, etc..
+\makenomenclature
+
+\begin{document}
+
+\flushbottom
+
+\pagenumbering{arabic}
+
+%\includepdf[pages=-]{firstPage/page_garde_these_CLA.pdf}
+
+% Small pages
+\input{pages/acknowledgements}
+\input{pages/abstract}
+\input{pages/tables}
+\include{pages/notations}
+
+% Chapters and sections
+\import{chapters/introduction/}{introduction}
+\import{chapters/chapter-one/}{chapter-one}
+\include{chapters/conclusion/conclusion}
+
+% Bibliography and appendix
+\include{pages/biblio}
+%\include{pages/appendix}
+%\blankpage
+%\clearsinglepage
+%\includepdf[pages=-]{lastPage/folio_administratif.pdf}
+
+\end{document}

@@ -1,0 +1,61 @@
+\section{Figures and tables}
+\label{sec:figures-and-tables}
+
+\lipsum[1]
+
+\subsection{A simple figure}
+
+% A simple figure with 5 parameters
+% {0.85} : relative size
+% {biscuits} : name of the file
+% {jpg} : extensions
+% {htb} : position
+\MyFigure{0.85}{biscuits}{jpg}{A lot of biscuits}{htb}
+
+As you can see in the label, the \ref{fig:biscuits} has been taken by myself ! This is how you make a reference to a picture.
+
+\subsection{A figure with subfigures}
+
+Here is how subfigures are handled.
+
+
+\subsection{Tables}
+
+\begin{table}[htb]
+    \caption{A single table}
+    \label{tab:a-simple-table}
+    \centering
+    \footnotesize
+
+    \begin{tabular}{lll | r}
+        \toprule
+        This & Is & A & Table\\
+        \midrule
+        1 & first     & a & 123456\\
+        2 & second    & b & 123456\\
+        3 & third     & c & 123456\\
+        4 & fourth    & d & 123456\\
+        5 & fifth     & e & 123456\\
+        \bottomrule
+          &           & Total & a lot\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \caption{Table with multirow and multicolumn}
+    \label{tab:complex-table}
+  
+    \centering
+    \footnotesize
+
+    \begin{tabular}{ll | cc }
+        \toprule
+            &       &\multicolumn{2}{c }{Animals}\\
+        Type & Color & Dog & Cat\\
+        \midrule
+        \multirow{2}{*}{The same} & Blue    & 3  & 45\\
+                            & Red     & 13 & 45 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

@@ -1,0 +1,372 @@
+
+% Margins
+\geometry{
+  left=25mm,
+  right=20mm,
+  top=25mm,
+  bottom=20mm,
+  bindingoffset=0mm,
+  headheight=20pt,
+}
+
+% Some nice colors
+\definecolor{light-gray}{gray}{0.85}
+\definecolor{tablerowcolor}{gray}{0.95}
+\definecolor{dark-gray}{gray}{0.45}
+\definecolor{navy}{RGB}{0, 40, 150}
+\definecolor{mypink}{RGB}{200, 100, 100}
+\definecolor{brown}{RGB}{120, 50, 10}
+\definecolor{lightBlue}{RGB}{204, 220, 255}
+\definecolor{fedora}{RGB}{153, 0, 51}
+\definecolor{deep-gray}{RGB}{80, 80, 80}
+\definecolor{deep}{RGB}{25, 25, 25}
+
+% Style for urls and links, foot note indices, etc
+\hypersetup{
+  colorlinks = true,
+  urlcolor = navy,
+  linkcolor = navy,
+  citecolor = navy,
+}
+\urlstyle{same}
+
+% Define the depths of the tocs
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% Small chapter introduction on the chapter page
+\newenvironment{chapterabstract}{}{%
+  \par\nobreak\normalsize
+  \vskip-\ht\strutbox\noindent
+  \noindent\makebox[\linewidth]{\rule{\textwidth}{1.25pt}}
+}
+
+% Small section conclusion at the end of a section
+\newenvironment{subconclusion}{\FloatBarrier\vspace{1cm}\begin{center}\rule{0.25\textwidth}{.4pt}$_{***}$\rule{0.25\textwidth}{.4pt}\end{center}\vspace{0.4cm}\par}
+{\begin{center}\rule{0.1\textwidth}{.4pt}$_{*}$\rule{0.1\textwidth}{.4pt}\end{center}\vspace*{\fill}
+}
+
+% Caption style
+\captionsetup[table]{name=Table}
+\captionsetup[figure]{name=Figure}
+
+% Page style
+\pagestyle{fancy}
+
+%Chapter style
+\titleformat{name=\chapter}[display]
+  {\normalfont\Large\sffamily}
+  {\flushright\fontsize{100}{0}\textbf{\textcolor{black!35}{\thechapter}}}{10pt}
+  {\flushright\fontsize{40}{0}\textbf{#1}\vskip180pt\fontsize{9}{0}\selectfont\begin{flushright}IN THIS CHAPTER\end{flushright}\rule{\textwidth}{1.5pt}}
+\titlespacing*{\chapter}
+  {0pt}{-40pt}{0pt}
+
+  \titleformat{name=\chapter, numberless}[display]
+    {\normalfont\Large\sffamily}
+    {\flushright\fontsize{100}{0}\textbf{\textcolor{black!35}{\text{*}}}}{10pt}
+    {\flushright\fontsize{40}{0}\textbf{#1}\vskip90pt\rule{\textwidth}{1.5pt}}
+  \titlespacing*{\chapter}
+    {0pt}{-40pt}{0pt}
+
+% Numbering style
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand\thesection{\arabic{section}}
+
+% Header style, for left-even (le), right-odd (ro)
+\renewcommand{\headrulewidth}{0.3pt}
+\fancyhf{}
+\fancyheadoffset[loh,reh]{15mm}
+\fancyhead[le]{\nouppercase{\small{\rightmark}}}
+\fancyhead[ro]{\MakeUppercase {\small{\textbf{\leftmark}}}}
+
+% Footer style : the page number, centered, small
+\renewcommand{\footrulewidth}{0.3pt}
+\fancyfoot[C]{\small{\thepage}}
+
+% Paragraph style
+\setlength\parskip{0.5em plus 1pt} %Distance between paragraphs
+\setlength{\parindent}{15pt} %Indent value
+
+% Add a intentionally left blank page
+\makeatletter
+\newcommand*\blankpage{
+\clearpage
+\if@twoside
+    \ifodd
+		\c@page
+	\else
+        \vspace*{\fill}
+        \hfill
+        \begin{center}
+			This page intentionally left blank.
+        \end{center}
+        \vspace{\fill}
+        \thispagestyle{empty}
+        \newpage
+        \if@twocolumn
+			\hbox{}
+			\newpage
+		\fi
+    \fi
+\fi}
+\makeatother
+
+
+% Bibliography style
+% \DeclareFieldFormat{doi}{%
+%    \mkbibacro{DOI}\addcolon\space
+%    \ifhyperref
+%      {\href{http://doi.org/#1}{\nolinkurl{#1}}}
+%      {\nolinkurl{#1}}
+% }
+
+% \DeclareNameAlias{sortname}{given-family-bold}
+% \DeclareNameAlias{default}{given-family-bold}
+% \renewbibmacro{in:}{%
+%   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+% \DeclareNameFormat{given-family-bold}{\mkbibbold{%
+% \ifgiveninits
+%  {\usebibmacro{name:family-given}
+%    {\namepartfamily}
+%    {\namepartgiveni}
+%    {\namepartprefix}
+%    {\namepartsuffix}}
+%  {\usebibmacro{name:family-given}
+%    {\namepartfamily}
+%    {\namepartgiven}
+%    {\namepartprefix}
+%    {\namepartsuffix}}%
+% \usebibmacro{name:andothers}}}
+
+
+% \usepackage{pdfpages}
+% \usepackage[nohints,tight]{minitoc}
+% \setcounter{minitocdepth}{7}
+% \setlength\cftparskip{-2pt}
+% \setlength\cftbeforechapskip{0pt}
+
+% \addto{\captionsfrench}{% Making babel aware of special titles
+%   \renewcommand{\mtctitle}{Contenu du chapitre}
+% }
+
+% \newcommand{\nomunit}[1]{%
+% \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+% \newcommand\tab[1][1cm]{\hspace*{#1}}
+% %% MATHS
+
+
+% %% CAPTIONS
+% \usepackage[font=footnotesize,labelfont=bf]{caption}
+% % \usepackage{chngcntr}
+% % \counterwithin{figure}{section}
+% \captionsetup[table]{name=Tableau}
+% %% ALGORITHMES
+% \usepackage{algorithmicx}
+% \usepackage[chapter]{algorithm}
+% \renewcommand{\listalgorithmname}{Liste des algorithmes}
+% %%TABLEAUX
+% 
+
+% \usepackage{colortbl}
+% \usepackage{dcolumn}
+% \newcolumntype{d}[3]{D{.}{\cdot}{#1} }
+% %% IMAGES
+% \usepackage{tikz}
+% \usetikzlibrary{shapes}
+% \usetikzlibrary{positioning}
+% \usetikzlibrary{automata}
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{graphs}
+% \usepackage{subcaption}
+
+
+% %% COULEURS
+% \usepackage{xargs}  %commentaire.
+% \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+
+% \newcommandx{\complete}[1]{\todo[linecolor=navy,backgroundcolor=navy!25,bordercolor=navy!25]{#1}}
+
+
+
+% %Nom avant prenom et iniitiale
+
+% \renewbibmacro{in:}{%
+%   \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+
+% %% COMMANDES PERSO
+% \usepackage{soul}
+
+% \sethlcolor{lightBlue}
+% \makeatletter
+% \def\SOUL@hlpreamble{%
+% \setul{\dimexpr\dp\strutbox+2pt}{\dimexpr\ht\strutbox+\dp\strutbox+2pt\relax}
+% \let\SOUL@stcolor\SOUL@hlcolor
+% \SOUL@stpreamble
+% }
+% \makeatother
+
+% % \newcommand{\complete}[1]{
+% % \hl{#1}}
+
+% \newcommand{\eqspace}{\hspace{0.25cm}}
+% \newcommand{\fo}{\textbf{\textit{f}}}
+
+% \newcommand{\SA}[2]{#1$\cdot$#2}
+
+% \usepackage{lastpage}
+% %%STYLES
+% %\usepackage{showframe}
+% %\usepackage[showframe]{geometry}
+
+
+
+
+% \usepackage[explicit]{titlesec}
+% %\usepackage{titlesec}
+
+% \newcommand*\HUGE{\Huge}
+% \newcommand*\chapnamefont{\normalfont\LARGE\MakeUppercase}
+% \newcommand*\chapnumfont{\normalfont\HUGE}
+% \newcommand*\chaptitlefont{\normalfont\HUGE\bfseries}
+
+% %\linespread{1.75}
+
+% \newlength\beforechapskip
+% \newlength\midchapskip
+% \setlength\midchapskip{\paperwidth}
+% \setlength\parskip{1em plus 2pt}
+% \addtolength\midchapskip{-\textwidth}
+% \addtolength\midchapskip{-\oddsidemargin}
+% \addtolength\midchapskip{-1in}
+% \setlength\beforechapskip{12mm} %Contole de Chapitre 1 block noir
+
+% \titleformat{name=\chapter,numberless}[display]
+%   {\normalfont\filleft}
+%   {{\chaptitlefont #1}%
+%     \makebox[0pt][l]{\hspace{.8em}%
+%      \color{white} \resizebox{!}{\beforechapskip}{\chapnumfont\thechapter}%
+%           \color{black} \hspace{.8em}%
+%       \rule{\midchapskip}{\beforechapskip}%
+%     }%
+%   }%
+%   {1pt}
+%   {\chaptitlefont}
+
+
+% \titleformat{name=\chapter}[display]
+%   {\normalfont\filleft}
+%   {{\chapnamefont\chaptertitlename}%
+%     \makebox[0pt][l]{\hspace{.8em}%
+%       \resizebox{!}{\beforechapskip}{\chapnumfont\thechapter}%
+%       \hspace{.8em}%
+%       \rule{\midchapskip}{\beforechapskip}%
+%     }%
+%   }%
+%   {10pt}
+%   {\chaptitlefont #1}
+% \titlespacing*{\chapter}
+%   {0pt}{20pt}{20pt}
+
+% % Pages double vide a gauche
+%  \makeatletter
+% \renewcommand*\blankpage{
+% \clearpage
+% \if@twoside
+%             \ifodd\c@page\else
+%                 \vspace*{\fill}
+%                 \hfill
+%                 \begin{center}
+%                   PAGE INTENTIONNELLEMENT LAISSÉE BLANCHE
+%                 \end{center}
+%                 \vspace{\fill}
+%                 \thispagestyle{empty}
+%                 \newpage
+%                 \if@twocolumn\hbox{}\newpage\fi
+%             \fi
+%         \fi
+%        }
+% \makeatother
+
+%     \makeatletter
+%     \renewcommand\@dotsep{1000}   % default value 4.5
+%     \makeatother
+
+% \usepackage{array,tabularx}
+% \usepackage[french]{nomencl}
+
+
+% %% NOMENCLATURE
+
+% \renewcommand\nomgroup[1]{%
+%   \item[\bfseries
+%   \ifstrequal{#1}{W}{Usure}{%
+%   \ifstrequal{#1}{O}{Optimisation}{%
+%   \ifstrequal{#1}{M}{Modèle numérique}{%
+%   \ifstrequal{#1}{A}{Abréviations}{}}}}%
+% ]}
+
+
+% \newcommand{\DimensUnits}[1]{\hfill\makebox[8em]{[\si{#1}]}\ignorespaces}
+
+% \newenvironment{Notations}[1]
+%   {\noindent#1  : \small \par \begin{tabular}{r @{  :  } l}}
+%   {\end{tabular}\vspace{\baselineskip}}
+
+
+% \newcommand{\sendToNomenclature}[4]
+% {
+%   \nomenclature[#1]{$#2$}{#3}
+% }
+
+% \newcommand{\iNotation}[4]
+% {
+%   $#2$ & #3 \ifthenelse{\equal{#4}{}}{}{en \si{#4}}
+%   \sendToNomenclature{#1}{#2}{#3}{#4}
+% }
+
+% \newcommand{\hideNotation}[4]
+% {
+%   $#2$ & #3 \ifthenelse{\equal{#4}{}}{}{en \si{#4}}
+% }
+
+
+
+
+% Some hyphenations (french ones ;) )
+% \hyphenation{quel-ques}
+% \hyphenation{mar-que}
+% \hyphenation{co-gni-tive}
+% \hyphenation{cons-tante}
+% \hyphenation{élas-to-hy-dro-dy-namique}
+% \hyphenation{macro-géo-métries}
+
+% \newcommand{\hNotation}[4]
+% {
+%   %$#1$ & #2 \ifthenelse{\equal{#3}{}}{}{en \si{#3}}
+%   \sendToNomenclature{#1}{#2}{#3}{#4}
+% }
+
+% \usepackage{blindtext}
+% \usepackage{enumitem}
+% \usepackage{xcolor}
+
+% \newenvironment{PushMargins}[2]{\begin{list}{}{%
+% \setlength{\topsep}{0pt}%
+% \setlength{\leftmargin}{0pt}%
+% \setlength{\rightmargin}{0pt}%
+% \setlength{\listparindent}{\parindent}%
+% \setlength{\itemindent}{\parindent}%
+% \setlength{\parsep}{0pt plus 1pt}%
+% \addtolength{\leftmargin}{#1}%
+% \addtolength{\rightmargin}{#2}%
+% }\item }{\end{list}}
+% \usepackage{etoolbox}
+% \DeclareSIUnit{\rpm}{rpm}
+% \DeclareSIUnit{\Nm}{Nm}
+% \newcommand{\declareUnit}[1]{\DimensUnits{#1}}
+
+% \renewcommand{\nomname}{Abréviations et notations}
+% \newcommand{\mergeCol}[1]{\multicolumn{2}{c}{#1}}
+% \usepackage[normalem]{ulem}

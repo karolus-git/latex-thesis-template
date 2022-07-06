@@ -1,0 +1,263 @@
+\blankpage
+\chapter*{Annexes}
+\makeatletter
+\renewcommand\listoftables{%
+    \@starttoc{lot}%
+}
+\makeatother
+\addcontentsline{toc}{chapter}{Annexes}
+\renewcommand{\thesection}{\Alph{section}}
+\setcounter{section}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\addtocontents{lof}{\protect\setcounter{tocdepth}{0}}
+\addtocontents{lot}{\protect\setcounter{tocdepth}{0}}
+\captionsetup[figure]{list=no}
+\captionsetup[table]{list=no}
+\captionsetup{labelformat=AppendixTables}
+
+\section{Définition du coefficient d'usure\label{appendix:Ludema}}
+
+Comme introduit dans la section \ref{def:coeffk}, Ludema et Meng se sont intéressés à la définition du coefficient d'usure dans leur article de 1995 \cite{Meng1995}. L'objectif de ces travaux étaient de lister les différents modèles d'usure abrasive de la bibliographie et les paramètres utilisés dans ces derniers. Cette liste (Tableau \ref{ann:WMO-listVariablesLudema}) comprend les 100 variables les plus utilisées dans les modèles, sachant que plus de 625 ont été trouvées.
+
+\begin{scriptsize}
+\begin{longtable}[b]{ll}\\
+\caption{Liste des 100 variables les plus utilisées dans les modèles d’usure abrasive, réalisée par Meng et Ludema \cite{Meng1995}}
+\label{ann:WMO-listVariablesLudema}\\
+Absolute humidity 	&	Melting temperature 		\\
+Absolute temperature of contact spot 	&	Molecular weight of lubricant 		\\
+Activation energy for parabolic oxidation 	&	Nominal contact area 		\\
+AE (acoustic emission) rate 	&	Number of asperities per millimeter 		\\
+Ambient temperature of surfaces 	&	Number of nucleation sites 		\\
+Angle of asperity geometry 	&	Oil density 		\\
+Applied load	&	Partial pressure of oxygen 		\\
+Applied nominal tensile stress 	&	Planck’s constant 		\\
+Applied plastic deformation 	&	Poisson’s ratio 		\\
+Area of contact of a plastic junction 	&	Probability of asperity encounter 		\\
+Area of film of transformed structures 	&	Probability of forming a wear particle 		\\
+Arrhenius constant for parabolic oxidation 	&	Radius of asperity 		\\
+Asperity strength 	&	Radius of junction area 		\\
+Atomic diameter of major constituent 	&	Real area of contact		\\
+Atomic weight 	&	Rotational velocity of layer elements 		\\
+Average temperature of chip 	&	Separation distance 		\\
+Boltzmann’s constant 	&	Shape factor of indenter 		\\
+Bulk hardness 	&	Shear modulus 		\\
+Burgers vector 	&	Shear strength of metal 		\\
+Coefficient of friction 	&	Sliding distance 		\\
+Composite surface roughness 	&	Sliding velocity 		\\
+Constant defining initial surface roughness 	&	Specific heat 		\\
+Constant defining load-area relation 	&	Standard deviation of surface roughness 		\\
+Constant defining particle size 	&	Standard wear resistance 		\\
+Constant defining size of a single contact 	&	Strain to failure in one loading cycle 		\\
+Constant defining stress 	&	Surface energy 		\\
+Contact pressure	&	Surface hardness 		\\
+Crack propagation velocity 	&	Temperature at which oxide film forms		\\
+Cross-sectional area of worn volume 	&	Temperature rise due to frictional heating		\\
+Density of oxide 	&	Thermal conductivity 		\\
+Density of wear debris 	&	Thermal diffusivity 		\\
+Depth of wear grooves 	&	Thickness of a wear particle		\\
+Dynamic hardness 	&	Time 		\\
+Effective hardness of a composite layer 	&	Total apparent area of disc and pin 		\\
+Effective Young’s modulus 	&	Total strain 		\\
+Elastic modulus 	&	Ultimate failure stress 		\\
+Empirical constant 	&	van der Waal’s constant 		\\
+Fatigue life of an asperity 	&	Viscosity of lubricating oil 		\\
+Flow pressure 	&	Volume fraction of each component 		\\
+Fracture toughness 	&	Volume loss by abrasion 		\\
+Friction force 	&	Volume loss by adhesion 		\\
+Gas constant 	&	Volume loss by corrosion 		\\
+Hardness of an asperity under oxide film 	&	Volume loss by fatigue 		\\
+Hertzian contact area 	&	Wear coefficient for non-welded junctions 		\\
+Initial oxygen concentration 	&	Wear coefficient for welded junctions 		\\
+Load supported by contacting asperities 	&	Width of groove 		\\
+Low cycle fatigue constant 	&	Work-hardening exponent 		\\
+Mean asperity interaction length 	&	Worn area 		\\
+Mean volume of a individual wear particle 	&	Yield strain 		\\
+Melting point of lubricant 	&	Yield strength		\\
+
+\end{longtable}
+\end{scriptsize}
+\normalsize
+
+
+\FloatBarrier
+\section{Module d'optimisation : algorithme MO-TRIBES}\label{ann:motribes}
+
+L'algorithme MO-TRIBES est relativement plus complexe qu'un algorithme PSO standard. La gestion des tribus, leurs créations ou destructions, le processus de communication et d'évaluation des tribus sont organisés comme suit :
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Pseudo-code de  MO-TRIBES, de \cite{Cooren2010}}
+\label{alg:OP-moEvolution}
+  \begin{algorithmic}
+	\State Initialiser de l’archive
+  \State Initialiser un premier essaim de particules
+  \State Initialiser $p_i$ à $x_i$ pour chaque particule
+  \State Évaluer les fonctions objectifs pour chaque particule et initialiser $g_i$
+  \State Insérer les particules non-dominées à l’archive
+ 	\While {true}
+		\State Choisir la stratégie de déplacement adaptée
+		\State Mettre à jour les positions des individus
+		\State Évaluer les fonctions objectifs pour chaque particule
+    \State Mettre à jour $p_i$ et $g_i$
+    \If {n==NL/2}
+      \State Adaptations structurelles : création et suppression de individus et tribus, restructuration des liens de communication internes et externes
+        \If {nDomPrev=0}
+          \State Redémarrer algorithme
+          \State Mettre à jour la taille de l’Archivage
+        \EndIf
+        \State Calculer $NL$
+    \EndIf
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
+
+Une description plus détaillée est disponible dans les travaux de thèse de Cooren \cite{Cooren2010}.
+
+\newpage
+\section{Module d'usure : algorithmes et boucles de calculs}\label{ann:boucles}
+
+L'algorithme \ref{alg:WM-createGrid} décrit le processus de création et de gestion du maillage d'usure : ce maillage a pour objectif de stocker en tout point du flanc de denture la valeur cumulée de l'usure sur le pignon et sur la roue. Lors du calcul de répartition des charges, la profondeur d'usure sera prise en compte dans le calcul de l'erreur cinématique à vide.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Algorithme de gestion des maillages d'usure}
+\label{alg:WM-createGrid}
+  \begin{algorithmic}
+    \If{Premier calcul}
+      \State Création de la grille initiale $\mathcal{G}$ de profondeurs d'usure
+    \Else
+      \State Création et remplissage de la grille temporaire $\mathcal{G_T}$ avec les maillages locaux
+      \ForAll{Points chargés  de $\mathcal{G_T}$}
+          \State Mise à jour des résultats de chargement du point correspondant de $\mathcal{G}$
+      \EndFor
+    \EndIf
+    \ForAll{Points chargés de $\mathcal{G}$}
+      \State Calcul et cumul de l'usure sur le pignon et la roue pour le point courant
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+
+\FloatBarrier
+En tout point du flanc de denture, la profondeur d'usure est estimée. Cette estimation se fait suite au calcul de répartition des charges. Le calcul de la profondeur d'usure nécessite plusieurs paramètres, tels que la pression, les vitesses de glissement, l'épaisseur de film d'huile. L'algorithme \ref{alg:WM-getWearC} est chargé de calculer l'ensemble de ces données.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Calcul de l'usure du pignon et de la roue en chaque point $i$ de la grille $\mathcal{G}$}
+\label{alg:WM-getWearC}
+  \begin{algorithmic}
+    \Require Points de la grille $\mathcal{G}$
+    \ForAll{Points chargés $i$ de $\mathcal{G}$}
+      \State Calcul du rayon équivalent $R_{eq}$
+      \State Calculs du glissement $G$ et du SRR
+      \State Calcul du facteur de Gupta $\Phi_T$
+      \State Calculs des facteurs adimensionnés W, U, G et S
+      \State Estimation de l'épaisseur de film minimale $h_{min}$
+      \State Estimation de l'épaisseur spécifique $\lambda$
+      \State Choix et calcul du coefficient d'usure local $k_i$
+      \State Calcul de la distance glissée du point $i$
+	    \State Estimation des profondeurs d'usure sur le pignon $h_{ip}$ et sur la roue $h_{ir}$
+    \EndFor
+    \State \Return $\mathcal{G}$
+  \end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+La procédure suivante a pour rôle d'estimer le nombre de rotations qu'il est possible de cumuler sur une étape donnée. Pour une étape, les profondeurs d'usure sur le pignon et sur la roue ont été calculées. La mise à jour de la géométrie n'étant nécessaire que lorsque l'usure actuellement cumulée sur le pignon ou la roue dépasse la valeur $h_{max}$, le nombre de rotation $\Delta r$ pour atteindre ces valeurs est calculée en divisant ce nombre par la profondeur de matière maximale arrachée sur le flanc de denture du pignon ($h_{max,p}$) ou de la roue ($h_{max,r}$) pour une unique rotation.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Calcul du nombre de rotations $\Delta r$ à cumuler pour l'étape actuelle}
+\label{alg:WM-cumulAMTfr}
+  \begin{algorithmic}
+    \Require Calcul de la profondeur d'usure $h$ pour une unique rotation
+    \Require Valeurs maximales de $h$ pour le pignon et la roue, notées $h_{max,p}$ et $h_{max,r}$
+    \State $\Delta r \gets h_{max}/\text{min}(h_{max,r},h_{max,p}) $
+      \If {Type Usure == 0}
+        \State $\Delta r \gets \Delta r_{max}$
+      \ElsIf{Type Usure == 1}
+        \State $\Delta r \gets min(\Delta r, r_{max})$
+      \ElsIf{Type Usure == 2}
+        \State $\Delta r \gets \Delta r$
+      \EndIf
+  \State \Return $\Delta_r \gets round(min(\Delta_r, R_{step}-r_{step}))$
+  \end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+L'algorithme général permettant la gestion des étapes et des cycles d'usures est retranscrit ci-dessous. La boucle interne gère le cumul de l'usure sur les étapes, la boucle externe est chargée de cumuler les itérations de cycles d'usure.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Algorithme général de prise en compte des cycles d'usure}
+\label{alg:WM-cumulAMTbeta}
+  \begin{algorithmic}
+    \State Initialisation du module d'usure
+    \Repeat{\hspace{0.2cm}Boucle externe}
+      \Repeat{\hspace{0.2cm}Boucle interne}
+	     \State Mise à jour des conditions de fonctionnement pour l'opération chargée
+       \State Calcul de répartition des charges
+ 	     \State Estimation de la profondeur d'usure sur une rotation
+       \State Cumul de l'usure sur l'étape en cours
+ 	    \Until{\eqspace Demande de sortie de boucle interne}
+      \State Calcul de la profondeur d'usure cumulée sur 1 cycle
+      \State Cumul des cycles sur la phase du planning
+    \Until{\hspace{0.2cm}Demande de sortie de boucle externe}
+  \end{algorithmic}
+\end{algorithm}
+\vspace{0.5cm}
+\FloatBarrier
+Dans la boucle interne, le calcul de l'usure se fait pour une étape donnée. Il est possible de sortir de cette boucle que si un cycle complet a été réalisé, c'est-à-dire que l'intégralité des rotations sur chaque étape du cycle a été réalisée ou si l'usure cumulée dépassée la valeur critique. Dans ce cas, une mise à jour de la géométrie est demandée.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Contrôle de la boucle interne}
+\label{alg:WM-exitInternalLoop}
+  \begin{algorithmic}
+  \State Sortie = false
+  \If {$r_{step}\geq R_{step}=f(n_{Cycle},n_{phase})$}
+      \State $n_{step}\gets n_{step}+1$
+      \State Sortie = false
+  \EndIf
+  \If {$n_{step}\geq N_{step}=f(n_{phase})$}
+      \State $n_{step}\gets 0$
+      \State $n_{Cycle}\gets n_{Cycle}+1$
+      \State Sortie = true
+  \EndIf
+  \If $\eqspace h_{max,r} \geq h_{max}) \Vert \eqspace h_{max,p} \geq h_{max})$
+    \State Sortie = true
+  \EndIf
+  \State \Return Sortie
+  \end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+La boucle \ref{alg:WM-cumulAMTc} est proche de la boucle \ref{alg:WM-cumulAMTfr}. Au lieu de calculer le nombre de rotations à cumuler pour terminer une étape, la boucle actuelle détermine le nombre de cycles complets $Delta_{Cycle}$ qu'il est possible de cumuler. Elle compare alors l'usure cumulée sur une unique itération du cycle $h_{Cycle}$ à la valeur maximale d'usure autorisée avant une mise à jour $h_{max}$.
+
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Cumul des cycles}
+\label{alg:WM-cumulAMTc}
+  \begin{algorithmic}
+    \Require Calcul de la profondeur d'usure $h_{Cycle}$ cumulée sur un cycle complet
+    \State $Delta_{Cycle} \gets h_{max}/\text{min}(h_{Cycle,r},h_{Cycle,p}) $
+
+  \State \Return $\Delta_{Cycle} \gets round(min(\Delta_{Cycle}, N_{Cycle}-n_{Cycle}))$
+  \end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+Cette boucle est la boucle externe, permettant de terminer le processus d'usure pour une phase donnée et ainsi pouvoir passer à la suivante. Si le nombre de phases est supérieur au planning ou que la quantité d'usure cumulée dépasse la valeur admissible (ici $H_{max}$), l'algorithme se termine.
+\begin{algorithm}
+  \floatname{algorithm}{Algorithme}
+\caption{Contrôle de la boucle externe}
+\label{alg:WM-exitExternalLoop}
+  \begin{algorithmic}
+  \State Sortie = false
+  \If {$n_{AMT}\geq N_{AMT}=f(n_{phase})$}
+      \State $n_{step}\gets 0$
+      \State $n_{AMT}\gets 0$
+      \State $n_{Phase}\gets n_{Phase}+1$
+  \EndIf
+  \If {$(n_{Phase}\geq N_{Phase} \eqspace \Vert \eqspace H_{max} \geq h_{max})$}
+  \State Sortie = true
+  \EndIf
+  \State \Return Sortie
+  \end{algorithmic}
+\end{algorithm}

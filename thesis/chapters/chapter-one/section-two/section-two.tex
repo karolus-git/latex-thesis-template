@@ -1,0 +1,763 @@
+\section{Maths and algorithms}
+\label{sec:mathandalgo}
+
+\lipsum[149]
+
+\subsection{Maths}
+
+\lipsum[143]
+
+\subsubsection{Simple equation}
+
+\begin{equation}\label{eq:famous-equation}
+    E= M \cdot C^2
+\end{equation}
+
+\begin{MyNotation}{with}
+    \MyNotationItem{E}{enery}{J}\\
+    \MyNotationItem{M}{mass}{kg}\\
+    \MyNotationItem{C}{speed of light}{m/s}\\
+\end{MyNotation}
+
+The \ref{eq:famous-equation} is famous, isn't it? A good thing to do, is to describe it a little bit ! You can use MyNotation and MyNotationItem to give details about the variables, the units.
+
+\subsubsection{An array of equations}
+
+\begin{eqnarray}
+   \text{The exponent is false in } & E = M \cdot C^3 
+   \label{eq:wrong-exponent} \\
+   \text{The exponent is also false in } & E = M \cdot C^{1.5}
+   \label{eq:also-wrong-exponent}
+\end{eqnarray}
+
+The equations are labeled so you can refer to \ref{eq:wrong-exponent} and \ref{eq:also-wrong-exponent} easily. An other method is to use subequations.
+
+\begin{subequations}
+    \begin{align}
+        \text{The exponent is false in } & E = M \cdot C^3  \label{eq:subequation_a} \\
+        \text{The exponent is also false in } & E = M \cdot C^{1.5} \label{eq:subequation_b}
+    \end{align}
+\end{subequations}
+
+In this case, both equations have the same number. You can refer to one or the other by its label. The \ref{eq:subequation_b} is false.
+
+\subsubsection{Equations with cases}
+
+\begin{equation}
+    \text{In equation $E = M \cdot C^p$} \hspace{0.2cm} \text{if}
+    \begin{cases}
+        p=2  \hspace{0.2cm} \text{the equation if correct} \\
+        p!=2 \hspace{0.2cm} \text{this may be wrong}\\
+    \end{cases}
+    \end{equation}
+
+\subsubsection{Work with arrays and matrices}
+
+
+\begin{equation}\label{eq:arrays-and-matrices}
+    E
+    =
+    \begin{bmatrix}
+        a & b & c \\
+        d & e & f \\
+        g & h &  i
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+          dog \\
+          cat \\
+          bird
+    \end{bmatrix}
+\end{equation}
+
+Hum, no sure about that equation \ref{eq:arrays-and-matrices}. The next equation explains why.
+
+\begin{equation}\label{eq:arrays-and-matrices-underbrace}
+    E
+    =
+    \underbrace{
+        \begin{bmatrix}
+            a & b & \cdots & c \\
+            d & e & \cdots & f \\
+            \vdots  & \vdots  & \ddots & \vdots  \\
+            g & h & \cdots & i
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            dog \\
+            cat \\
+            \vdots  \\
+            bird
+        \end{bmatrix}
+    }_\text{Makes no sense at all ! }
+\end{equation}
+
+
+\subsection{Algorithms}
+
+\begin{algorithm}
+
+    \caption{An example of an algorithm}
+    \label{alg:algorithm-example}
+    
+    \begin{algorithmic}
+        \Require You know those steps
+        \Require You want to go further
+        \State First step
+        \State Second step
+        \State Initialize $x_i$ and $y_i$
+        \While {$x_i$ != 3.1415}
+            \State Something
+            \State Anything
+            \If {$x_k$ == 3.1415}
+                \State Is this pi?
+                \State It could be
+            \EndIf
+            \ForAll{x}
+                \State I found pi!
+            \EndFor
+        \EndWhile
+        \Repeat{I say 'you' you say}
+            \State Me!
+        \Until{I can't anymore}
+    \end{algorithmic}
+\end{algorithm}
+
+% \begin{spacing}{1.6}
+% \begin{Notations}{où}
+% 	\iNotation{M}{U_{1,2i}^{ang}}{Déplacements angulaires du pignon (indice 1) et de la roue (indice 2) au point $i$}{\radian}	\\
+% 	\iNotation{M}{ei_i^{ang}}{Écart initial angulaire au point $i$}{\radian}\\
+%   \iNotation{M}{y_i^{ang}}{Distance entre les deux surfaces au point $i$ après chargement}{\radian}\\
+% 	\iNotation{M}{\alpha^{ang}}{Rapprochement global des surfaces en contact}{\radian}\\
+% 	\iNotation{M}{p_i}{Pression de contact au point $i$}{\mega\pascal}
+% \end{Notations}
+% \end{spacing}
+
+% \Figure{0.65}{BM-loa}{png}{Paramètres des équations de compatibilité des déplacements le long de la ligne d'action}{!htb}
+
+% Les paramètres nécessaires à la résolution des équations de compatibilité sont retranscrits dans la figure \ref{fig:BM-ecrasement}. La notion d'écart angulaire final au point i, noté $ef_i^{ang}$, correspond au rapprochement des corps $\alpha^{ang}_i$ dans l'aire de contact potentielle : celle-ci est située dans le plan tangent au point de contact à vide, représenté en rouge dans cette même figure.
+
+% \hNotation{M}{ef_i^{ang}}{Écart final angulaire au point $i$}{\radian}
+
+% \Figure{0.999}{BM-ecrasement}{pdf}{Prise en compte des écarts et des déplacements, d'après \cite{Teixeira2012}}{!htb}
+
+% \begin{comment}
+% \begin{figure}[htb]
+%   \centering
+%   \Subfigure{t}{0.315}{1.0}{BM-ecrasementA}{pdf}{À vide}
+%   \Subfigure{t}{0.315}{1.0}{BM-ecrasementB}{pdf}{Sous charge}
+%   \Subfigure{t}{0.315}{1.0}{BM-ecrasementC}{pdf}{Sous charge après recalage}
+%   \caption{Prise en compte des écarts et des déplacements, d'après \cite{Teixeira2012}}
+%   \label{fig:BM-ecrasement}
+% \end{figure}
+% \end{comment}
+
+% En plus de ces conditions de non-pénétration, les pressions de contact calculées pour l'ensemble des points doivent satisfaire l'équilibre du couple moteur $C_m$ tel que :
+
+% \begin{equation}
+% 	C_m = \sum_ {i=1}^{N} p_i S_i \cdot (R_i r_{proj,i})
+% \end{equation}
+% \hNotation{M}{C_m}{Couple moteur}{}
+% \hNotation{M}{N}{Nombre de carreaux des maillages locaux}{}
+% \hNotation{M}{\overrightarrow{n_{ref}}}{Normale à la surface}{}
+% \hNotation{M}{\overrightarrow{n_{rota_i}}}{Normale au bras de levier}{}
+
+% en sachant que $S_i$ est la surface du carreau $i$, $N$ le nombre de carreaux des maillages locaux, $R_i$ le bras de levier du carreau associé au point $i$ et $r_{proj,i}$ le produit scalaire entre la normale au carreau $\overrightarrow{n_{ref,i}}$ et la normale définie par le bras de levier $\overrightarrow{n_{rota,i}}$ au point $i$ (Figure \ref{fig:BM-normalRota}).
+
+% \Figure{0.22}{BM-normalRota}{pdf}{Vecteurs normaux et bras de levier au point $i$ du profil}{!htb}
+
+% \FloatBarrier
+% \subsubsection{Méthode de résolution du contact}
+
+% Le processus de résolution du contact est itéré jusqu’à ce que les conditions de sorties de boucles soient réunies, en termes de nombre d'itérations ou en termes de précision des résultats obtenue $\varepsilon$ (Figure \ref{fig:BM-convergenceDiagram})
+
+% \Figure{1.0}{BM-convergenceDiagram}{pdf}{Processus de calcul de la répartition de charge sous CYLAM}{!htb}
+
+% Les lignes de contacts sont réparties sur plusieurs dents. Une fois l'équilibre des pressions effectué, il est possible d'associer une charge transmise $F_k$ à chaque dent $k$ participant au contact.
+
+% \hNotation{M}{F_k}{Force totale transmise par la dent $k$}{}
+% \hNotation{M}{S_i}{Surface du carreau $i$}{}
+% \hNotation{M}{P_i}{Pression de contact sur le carreau $i$}{}
+
+% \begin{equation}
+% F_k=\sum^N_{i=1} P_i^k S_i \hspace{0.2cm} \text{et} \hspace{0.2cm} C_k=\sum^N_{i=1} P_i^k S_i \cdot (R_i r_{proj,i})
+% \end{equation}
+
+% où $P_i^k$ représentent les pressions instantanées de contact en chaque point $i$ associé au plan tangent de la dent $k$.
+
+% \begin{equation}
+% \hspace{0.2cm} \text{avec} \hspace{0.2cm}P_i^k =
+% \begin{cases}
+% p_i  \text{,\hspace{0.2cm}si $i$ est sur la dent $k$} \\
+% 0    \text{,\hspace{0.315cm}sinon}\\
+% \end{cases}
+% \end{equation}
+
+% La méthode des coefficients d'influence est utilisée pour déterminer le déplacement $U_i$ d'un point $i$ lorsque un point $j$ de la surface est chargé de manière unitaire (Figure \ref{fig:BM-pointApplication}). Ce comportement est explicité par l’équation \ref{eq:BM-equationDeplacement}.
+
+% \Figure{0.4}{BM-pointApplication}{pdf}{Méthode des coefficients d'influence : application d'une charge au point $j$ et déplacement au point $i$}{htb}
+
+% \begin{equation}\label{eq:BM-equationDeplacement}
+% U_i=\sum^N_{j=1} C_{ij}\cdot p_j
+% \end{equation}
+
+% La théorie de Boussinesq \cite{boussinesq1885application} offre la possibilité de connaître analytiquement les déplacements de tous les points du maillage suite au chargement d'un point par une charge unitaire.
+
+% \begin{equation}\label{eq:BM-deplacementPoint}
+%   \begin{bmatrix}
+%    U (M_1) \\
+%    U (M_2) \\
+%    \vdots  \\
+%    U (M_N)
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%   C_{1,1} & C_{1,2} & \cdots & C_{1,N} \\
+%   C_{2,1} & C_{2,2} & \cdots & C_{2,N} \\
+%   \vdots  & \vdots  & \ddots & \vdots  \\
+%   C_{N,1} & C_{N,2} & \cdots & C_{N,N}
+%   \end{bmatrix}
+%   \cdot
+%   \begin{bmatrix}
+%     F (M_1) \\
+%     F (M_2) \\
+%     \vdots  \\
+%     F (M_N)
+%   \end{bmatrix}
+% \end{equation}
+
+% \begin{Notations}{avec}
+%   \iNotation{M}{U(M_i)}{Déplacement global du point $M_i$}{}\\
+%   \iNotation{M}{F(M_i)}{Chargement appliqué au point $M_i$}{}\\
+%   \iNotation{M}{C_{ij}}{Matrice des coefficients d'influence}{}
+% \end{Notations}
+
+% La matrice des coefficients d'influence $C_{ij}$ est constituée de deux sous-entités, la matrice $C_{ij}^S$ relatif à la déformation de la surface ainsi que les matrices $C_{ij}^{PF}$ et $C_{ij}^{RF}$ traduisant respectivement les déformations structurelles du pignon et de la roue. Ainsi, la matrice complète des coefficients d'influence s'écrit :
+
+% \begin{equation}\label{eq:BM-coefficientInfluence}
+%   C_{ij}=C_{ij}^S+(C_{ij}^{PF}+C_{ij}^{RF})
+% \end{equation}
+% %\hideNotation{M}{C_{ij}}{Matrice des coefficients d'influence}{}
+% \hNotation{M}{C_{ij}^S}{Matrice des coefficients d'influence surfacique}{}
+% \hNotation{M}{C_{ij}^{PF,RF}}{Matrice des coefficients d'influence de flexion du pignon (PF) et de la roue(RF)}{}
+
+% Deux types de coefficients d'influence se distinguent.
+
+% \MyParagraph{Coefficients d'influence de flexion : calcul des déplacements}
+% L'une des caractéristiques de CYLAM est la prise en compte des structures complexes sous les dentures et de leurs effets. Ainsi, les engrenages développés disposent de voiles fins et inclinés, voire percés, de jantes, d'arbres creux, de palier, etc. Il semble délicat de trouver une formulation analytique pour la prise en compte de ces formes complexes. De ce fait, les coefficients de flexion sont calculés via une modélisation EF de la denture et de sa sous-structure.
+
+% Les calculs EF sont relativement longs et leur nombre est à réduire. Ainsi, le calcul des coefficients d'influence est effectué à partir d'un unique calcul élément-finis sur des points répartis régulièrement selon la hauteur et la largeur de la dent (Figure \ref{fig:BM-repartitionPointsFlexion}). Le maillage constitué est appliqué sur trois dents consécutives. Par la suite, des fonctions d'interpolation permettront d'obtenir les déplacements de n'importe quel point situé sur le flanc de denture.
+
+% \Figure{0.85}{BM-repartitionPointsFlexion}{pdf}{Répartition des points de calculs pour modélisation EF}{!htb}
+
+% Chaque point est chargé d'un effort unitaire et constitue ainsi un cas d'analyse statique. L'application d'un effort unitaire en chaque point engendre un déplacement de l'ensemble des points des maillages. Ces déplacements incluent les effets de flexion des dents mais aussi l’écrasement des surfaces aux alentours du point chargé (Figure \ref{fig:BM-coefficientInfluenceFlexion}). Pour extraire uniquement les effets dus à la flexion des dents, une étape de calcul supplémentaire est nécessaire : il s'agit d'encastrer le flanc anti-homologue (Figure \ref{fig:BM-coefficientInfluenceEcrasement})\cite{sains1989}.
+
+% \begin{figure}[htb]
+%   \centering
+%   \Subfigure{t}{0.315}{1.0}{BM-coefficientInfluenceNone}{pdf}{Non chargé}
+%   \Subfigure{t}{0.315}{1.0}{BM-coefficientInfluenceFlexion}{pdf}{ Anti-homologue libre\newline Flexion + écrasement }
+%   \Subfigure{t}{0.315}{1.0}{BM-coefficientInfluenceEcrasement}{pdf}{ Anti-homologue bloqué\newline Écrasement pur}
+%   \caption{Conditions aux limites selon le type de déplacement à évaluer}
+%   \label{fig:BM-coefficientInfluence}
+% \end{figure}
+
+% En considérant que les déplacements du point $i$ suite au chargement du point $j$ se notent respectivement $u_{ij}^L$ et $u_{ij}^B$ pour les calculs avec un flanc anti-homologue (L)ibre et un (B)loqué, les déplacements $u_{i}$ dus à la flexion de la dent uniquement s'expriment :
+
+% \begin{equation}\label{eq:depl}
+% u_{ij}=u_{ij}^L-u_{ij}^B
+% \end{equation}
+
+% Le déplacement $\overrightarrow{u_{ij}}$ du point $i$ dû à un chargement au point $j$ est finalement à projeter sur le vecteur $\overrightarrow{n_j}$, normal au point de chargement $j$.
+
+% \begin{equation}
+%   U_{ij} = \overrightarrow{u_{ij}}\cdot \overrightarrow{n_j}
+% \end{equation}
+
+% Pour les calculs de flexions, $N$ points sont répartis sur chacune des $k$ dents avec $k=1, 2 \text{ ou } 3$. Nous noterons par la suite $[U^k]$, la matrice des déplacements de points de la dent $k$.
+
+% \MyParagraph{Coefficients d'influence de flexion : fonction de formes}
+
+% A ce stade, les déplacements des points dus à la flexion des dents ne sont connus que sur les points de calculs de la Figure \ref{fig:BM-repartitionPointsFlexion}. Or, nous souhaiterions connaître les déplacements de n'importe quel point potentiel de contact sans avoir à effectuer un nouveau calcul Éléments-Finis. Pour se faire, des fonctions de formes sont introduites.
+
+% \begin{equation}\label{eq:eqone}
+% u(M,M')=\sum_{k=1}^K c_k(M')\cdot f_k(M) =
+% \begin{bmatrix}
+%  c_1(M') &
+%  c_2(M') &
+%  \dots  &
+%  c_K(M')
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%  f_1(M) \\
+%  f_2(M) \\
+%  \vdots  \\
+%  f_K(M)
+% \end{bmatrix}
+% \end{equation}
+
+% \begin{equation}\label{eq:eqtwo}
+% c_k(M')=\sum_{l=1}^K c_{kl} \cdot f_l(M') =
+% \begin{bmatrix}
+%  f_1(M') &
+%  f_2(M') &
+%  \dots  &
+%  f_K(M')
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%  c_{k1} \\
+%  c_{k2}\\
+%  \vdots  \\
+%  c_{kK}
+% \end{bmatrix}
+% \end{equation}
+
+% Enfin, la combinaison des équations \ref{eq:eqone} et \ref{eq:eqtwo} permet l'obtention du déplacement $u(M,M')$, exprimé sous forme matricielle :
+
+% \begin{equation}\label{eq:eqthree}
+% u(M,M')=
+% \begin{bmatrix}
+%  f_1(M') &
+%  f_2(M') &
+%  \dots  &
+%  f_K(M')
+% \end{bmatrix}
+% \cdot
+% \underbrace{
+% \begin{bmatrix}
+% c_{1,1} & c_{2,1} & \cdots & c_{K,1} \\
+% c_{1,2} & c_{2,2} & \cdots & c_{K,2} \\
+% \vdots  & \vdots  & \ddots & \vdots  \\
+% c_{1,K} & c_{2,K} & \cdots & c_{K,K}
+% \end{bmatrix}
+% }_{[C]}
+% \cdot
+% \begin{bmatrix}
+%  f_1(M) \\
+%  f_2(M) \\
+%  \vdots  \\
+%  f_K(M)
+% \end{bmatrix}
+% \end{equation}
+
+% Dans l'équation \ref{eq:eqthree}, la matrice $[C]$ est spécifique à la structure. Grâce à celle-ci, il est possible de déduire le déplacement d'un point quelconque M de la denture, lorsque des efforts normaux sont appliqués à la structure.
+
+% En se basant sur l'équation \ref{eq:eqthree}, les déplacements aux $M_1$ à $M_K$ pour un cas de charge quelconque au point $M'$ sont déterminés par l'équation \ref{eq:eqfour}.
+
+% \begin{equation}\label{eq:eqfour}
+%   \begin{bmatrix}
+%    u(M_1,M') &
+%    u(M_2,M') &
+%    \dots  &
+%    u(M_K,M')
+%   \end{bmatrix}
+%   =
+% \begin{bmatrix}
+%  f_1(M') &
+%  f_2(M') &
+%  \dots  &
+%  f_K(M')
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%   C
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%  f_1(M) \\
+%  f_2(M) \\
+%  \vdots  \\
+%  f_K(M)
+% \end{bmatrix}
+% \end{equation}
+
+% Dans la même logique, si des chargements multiples sont appliqués aux points $M_1'$ à $M_K'$, les déplacements des points $M_1$ à $M_K$ s'écrivent :
+
+% \begin{equation}\label{eq:eqfive}
+%   \begin{bmatrix}
+%    u(M_1,M_1') & \dots & u(M_K,M_1')\\
+%    \vdots  & \ddots & \vdots \\
+%    u(M_1,M_K') & \dots & u(M_K,M_K')\\
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%    f_1(M_1') & \dots & f_K(M_1')\\
+%    \vdots  & \ddots & \vdots \\
+%    f_1(M_K') & \dots & f_K(M_K')\\
+%   \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%   C
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%   f_1(M_1) & \dots & f_1(M_1)\\
+%   \vdots  & \ddots & \vdots \\
+%   f_K(M_K) & \dots & f_K(M_K)\\
+% \end{bmatrix}
+% \end{equation}
+
+% En posant :
+% \begin{equation}\label{eq:eqsix}
+%   \begin{bmatrix}
+%     f
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%    f_1(M_1) & \dots & f_K(M_1)\\
+%    \vdots  & \ddots & \vdots \\
+%    f_1(M_K) & \dots & f_K(M_K)\\
+%   \end{bmatrix}
+% \end{equation}
+
+% Et en admettant que les points $M$ et $M'$ sont confondus lorsque le déplacement est mesuré au point d'application de l'effort, l'équation \ref{eq:eqfive} devient :
+
+% \begin{equation}\label{eq:eqseven}
+%   \begin{bmatrix}
+%    u(M_1,M_1) & \dots & u(M_K,M_1)\\
+%    \vdots  & \ddots & \vdots \\
+%    u(M_1,M_K) & \dots & u(M_K,M_K)\\
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%    f
+%   \end{bmatrix}^T
+% \cdot
+% \begin{bmatrix}
+%   C
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+% f
+% \end{bmatrix}
+% \end{equation}
+
+% En connaissant les déplacements des $K$ points pour l'ensemble des cas de chargement, le calcul de la matrice $[C]$ s'exprime ainsi :
+
+% \begin{equation}\label{eq:eqseven}
+%   \begin{bmatrix}
+%     C
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%    f^{-1}
+%   \end{bmatrix}^T
+%   \cdot
+%     \begin{bmatrix}
+%    u(M_1,M_1) & \dots & u(M_K,M_1)\\
+%    \vdots  & \ddots & \vdots \\
+%    u(M_1,M_K) & \dots & u(M_K,M_K)\\
+%   \end{bmatrix}
+%   \cdot
+% \begin{bmatrix}
+% f^{-1}
+% \end{bmatrix}
+% \end{equation}
+
+% Cette équation est applicable à chacune des 3 dents. La généralisation de l'équation \ref{eq:eqseven} s'écrit alors :
+
+% \begin{equation}\label{eq:eqeight}
+%   \begin{bmatrix}
+%     C^k
+%   \end{bmatrix}
+%   =
+%   \begin{bmatrix}
+%    f^{-1}
+%   \end{bmatrix}^T
+%   \cdot
+%     \begin{bmatrix}
+%    U^k
+%   \end{bmatrix}
+%   \cdot
+% \begin{bmatrix}
+% f^{-1}
+% \end{bmatrix}
+% \end{equation}
+
+% avec $[U^k]$ les matrices de déplacements pour la dent $k$.
+
+% Les efforts sont appliqués sur la surface du flanc de denture et les déplacements sont aussi déterminés sur cette dernière. De ce fait, il est possible de décomposer chaque fonction $f$ de la base en deux fonctions à une variable chacune :
+
+% \begin{equation}
+%   f_k(z,r) = h_j(z) \cdot g_i(r)
+% \end{equation}
+
+% où $r$ et $z$ correspondent à la position du point respectivement selon la hauteur de la dent et selon sa largeur. Pour assurer un bon conditionnement de la matrice des fonctions de formes, deux variables $\lambda_1$ et $\lambda_2$ sont introduites :
+
+% \begin{subequations}
+% \begin{align}
+% \lambda_1&=\frac{z+b/2}{b}\\
+% \lambda_2&=\frac{r-r_f}{r_a-r_f}
+% \end{align}
+% \end{subequations}
+
+% \begin{Notations}{où}
+%   \iNotation{M}{r_a}{Rayon de tête}{m}\\
+%   \iNotation{M}{r_f}{Rayon de pied}{m}\\
+%   \iNotation{M}{b}{Largeur de denture}{m}\\
+% \end{Notations}
+
+%  Dans sa hauteur, une dent présente un comportement relativement similaire à celui d'une poutre encastrée-libre (Figure \ref{fig:BM-equivalence-poutre}). La i\textsuperscript{ème} fonction $g$ s'écrit sous la forme polynomiale, tout comme les solutions des déformées d'une telle poutre :
+
+% \begin{equation}
+%   g_i(\lambda_2) = \lambda_2^{i-1}
+% \end{equation}
+
+% \Figure{0.40}{BM-equivalence-poutre}{pdf}{Corrélation entre la déformée d'une dent chargée et celle d'une poutre encastrée-libre \cite{Teixeira2012}}{!htb}
+
+% Dans sa largeur, le comportement d'une dent s'approche de celui d'une poutre dont les conditions aux limites seraient libre-libre. Pour la fonction $h$, sa j\textsuperscript{ème} fonction est définie via les fonctions de résonance de ce type de poutre :
+
+% \begin{equation}
+% \begin{cases}
+%   \text{Si } j=1 & h_j(\lambda_1) = 1 \\
+%   \text{Si } j=2 & h_j(\lambda_1) = 1-2\cdot \lambda_1 \\
+%   \text{Sinon}  & h_j(\lambda_1)=sin(\mu_j\cdot\lambda_1)+sinh(\mu_j\cdot\lambda_1) - \alpha_j \cdot (cos(\mu_j\cdot\lambda_1)+cosh(\mu_j\cdot\lambda_1))
+% \end{cases}
+% \end{equation}
+
+% avec :
+% \begin{equation}
+% \begin{cases}
+%   \alpha_j = & (sin(\mu_j)-sinh(\mu_j))/(cos(\mu_j)-cosh(\mu_j)) \\
+%   \mu_j = & (j-3/2) \cdot \pi
+% \end{cases}
+% \end{equation}
+
+% Toutes les fonctions de formes de la base sont maintenant connues. En les associant aux déplacements des points obtenus précédemment, il est possible d'en déduire les matrices des coefficients d'influence de flexion $[C^k]$ pour chacune des $k$ dents :
+
+% \begin{equation}
+% \begin{bmatrix}
+%   C^k
+% \end{bmatrix}
+% =
+% \begin{bmatrix}
+%   f
+% \end{bmatrix}^{-1}
+% \cdot
+% \begin{bmatrix}
+%   U^k
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%   f
+% \end{bmatrix}^{-1}
+% \end{equation}
+
+% \MyParagraph{Coefficients d'influence de flexion : interpolations des coefficients}
+
+% À cette étape, nous cherchons à obtenir les coefficients d'influence de flexion pour les points situés dans le contact pour une position cinématique donnée. Si le maillage local de la zone de contact de la position courante est constitué de $N$ points, $N \times N$ coefficients d'influence seront à calculer : pour un point $N$ donné, il est nécessaire de considérer les effets des N points sur ce même point.
+
+% Ainsi, le coefficient d'influence $C(M_i / M_j)$, correspondant à l'influence du point chargé $M_j$ sur le déplacement d'un point $M_i$ s'exprime ainsi :
+
+% \begin{equation}\label{eq:BM-deplacementPoint}
+%   C(M_i / M_j)=
+%   \begin{bmatrix}
+%    f_1(M_i) \\
+%    f_2(M_i) \\
+%    \vdots  \\
+%    f_K(M_i)
+%  \end{bmatrix}^T
+%    \cdot
+%   \begin{bmatrix}
+%   c_{1,1} & c_{1,2} & \cdots & c_{1,K} \\
+%   c_{2,1} & c_{2,2} & \cdots & c_{2,K} \\
+%   \vdots  & \vdots  & \ddots & \vdots  \\
+%   c_{K,1} & c_{K,2} & \cdots & c_{K,K}
+%   \end{bmatrix}
+%   \cdot
+%   \begin{bmatrix}
+%    f_1(M_j) \\
+%    f_2(M_j) \\
+%    \vdots  \\
+%    f_K(M_j) \\
+%   \end{bmatrix}
+% \end{equation}
+
+% Finalement, les coefficients d'influence de tous les points de la zone de contact sont regroupés au sein d'une nouvelle matrice de coefficients d'influence de taille $N \times N$ :
+
+% \begin{equation}\label{eq:BM-deplacementPointGlobaux}
+%   \begin{bmatrix}
+%   C({M_1 / M_1}) & C({M_1 / M_2}) & \cdots & C({M_1 / M_K}) \\
+%   C({M_2 / M_1}) & C({M_2 / M_2}) & \cdots & C({M_2 / M_K}) \\
+%   \vdots& \vdots & \ddots & \vdots \\
+%   C({M_K / M_1}) & C({M_K / M_2}) & \cdots & C({M_K / M_K}) \\
+%   \end{bmatrix}
+% \end{equation}
+
+
+% Nous disposons à ce niveau des coefficients d'influence de flexion pour tous les points du contact.
+
+
+% \MyParagraph{Coefficients d'influence de contact}
+
+% En complément de la flexion, les déplacements des points des surfaces soumis à un écrasement sont à calculer. Les travaux de Boussinesq \cite{boussinesq1885application} et Cerruti \cite{cerruti1982lincei} proposent des formulations basées sur des fonctions potentielles afin d'obtenir l'expression de ces déplacements au point $i$ pour un chargement du point $j$ (Équation \ref{eq:BM-deplacementBoussinesq}).
+
+% \begin{equation}\label{eq:BM-deplacementBoussinesq}
+%   u_i(x,y)= \int \int_{A_c} A_{ij}(x-x',y-y') \cdot p_j(x',y') \cdot dx'dy'
+% \end{equation}
+
+% \begin{Notations}{où}
+%   \iNotation{M}{A_c}{Aire de contact potentielle}{}\\
+%   \iNotation{M}{x,y}{Coordonnées du point étudié $i$}{}\\
+%   \iNotation{M}{x',y'}{Coordonnées du point chargé $j$}{}\\
+%   \iNotation{M}{p_j}{Pression appliquée au point $j$}{}
+% \end{Notations}
+
+% Dans notre cas, les deux corps sont soumis à l'écrasement de leur surface. Pour prendre en compte cette notion, le déplacement normal $u_i^S$ du point $i$ s'écrit :
+
+% \begin{equation}
+%     u_{i}^S=u_{1i}^S+u_{2i}^S
+% \end{equation}
+
+% \begin{equation}
+%     u_{i}^S=\bigg(\frac{1-\nu_1^2}{\pi E_1} +\frac{1-\nu_2^2}{\pi E_2} \bigg)\cdot \sum^N_{j=1} a_{ij}p_j
+% \end{equation}
+
+% En mettant en place la simplification suivante :
+% \begin{equation}
+%   C_{ij}^S=\bigg(\frac{1-\nu_1^2}{\pi E_1} +\frac{1-\nu_2^2}{\pi E_2} \bigg) \cdot a_{ij}
+% \end{equation}
+
+% L’équation du déplacement normal du point $i$ s'écrit :
+% \begin{equation}
+%     u_{i}^S=\sum^N_{j=1} C_{ij}^Sp_j
+% \end{equation}
+
+% Il est maintenant nécessaire de définir le paramètre $a_{ij}$. En effectuant un changement de variables telles que $x=x_i-x_j$ et $y=y_i-y_j$, l'expression des coefficients d'influence de surface s'écrit alors :
+
+% \begin{equation}\label{eq:BM-ecrasementBoussinesq}
+%   \begin{split}
+%   a_{ij}=&+(x-a)\cdot ln\Big(\frac{(y-b)+\sqrt{(y-b)^2+(x-a)^2}}{(y+b)+\sqrt{(y+b)^2+(x-a)^2}}\Big)\\
+%       &+(x+a)\cdot ln\Big(\frac{(y+b)+\sqrt{(y+b)^2+(x+a)^2}}{(y-b)+\sqrt{(y-b)^2+(x+a)^2}}\Big)\\
+%       &+(y-b)\cdot ln\Big(\frac{(x-a)+\sqrt{(y-b)^2+(x-a)^2}}{(x+a)+\sqrt{(y-b)^2+(x+a)^2}}\Big)\\
+%       &+(y+b)\cdot ln\Big(\frac{(x+a)+\sqrt{(y+b)^2+(x+a)^2}}{(x-a)+\sqrt{(y+b)^2+(x-a)^2}}\Big)
+%     \end{split}
+% \end{equation}
+
+% Il va de soi que le calcul du déplacement dû à l'écrasement du point $i$ pour un chargement au point $j$ n'est valable que si les points $i$ et $j$ sont situés sur la même dent $k$. À contrario, un couplage existe bien lorsque la flexion de la dent $k$ est considérée : dans ce cas, tous les points, quelle que soit la dent sur laquelle ils se trouvent, sont pris en compte.
+
+% \MyParagraph{Coefficients d'influence : calcul des déplacements}
+
+% Le déplacement total est la somme des déplacements dus à la flexion du pignon et de la roue, ainsi que ceux dus à l'écrasement des surfaces chargées et est obtenu par l'équation \ref{eq:BM-deplacementCalcul}.
+
+% \begin{equation}\label{eq:BM-deplacementCalcul}
+%   \begin{split}
+%   \begin{bmatrix}
+%    U(M_1) \\
+%    \vdots  \\
+%    U(M_i) \\
+%    \vdots  \\
+%    U(M_N)
+%  \end{bmatrix}
+%    =
+%    &
+%    \underbrace{
+%   \begin{bmatrix}
+%   C_{1,1}^{Pf} & \dots           & C_{1,N}^{Pf} \\
+%   \vdots       &  C_{i,j}^{Pf}   & \vdots  \\
+%   C_{K,1}^{Pf} & \dots           & C_{N,N}^{Pf}
+%   \end{bmatrix}
+%   \cdot
+%   \begin{bmatrix}
+%     F(M_1) \\
+%     \vdots  \\
+%     F(M_i) \\
+%     \vdots  \\
+%     F(M_N)
+%   \end{bmatrix}
+%   }_\text{Déplacements de flexion (Pignon)}
+%   +
+%      \underbrace{
+%   \begin{bmatrix}
+%   C_{1,1}^{Rf} & \dots           & C_{1,N}^{Rf} \\
+%   \vdots       &  C_{i,j}^{Rf}   & \vdots  \\
+%   C_{K,1}^{Rf} & \dots           & C_{N,N}^{Rf}
+%   \end{bmatrix}
+%   \cdot
+%   \begin{bmatrix}
+%     F(M_1) \\
+%     \vdots  \\
+%     F(M_i) \\
+%     \vdots  \\
+%     F(M_N)
+%   \end{bmatrix}
+%   }_\text{Déplacements de flexion (Roue)}
+%   +\\
+%   &
+%   \underbrace{
+%   \begin{bmatrix}
+%   C_{1,1}^{S} & \dots           & C_{1,N}^{S} \\
+%   \vdots       &  C_{i,j}^{Rf}   & \vdots  \\
+%   C_{K,1}^{S} & \dots           & C_{N,N}^{S}
+%   \end{bmatrix}
+%   \cdot
+%   \begin{bmatrix}
+%     F(M_1)/dS \\
+%     \vdots  \\
+%     F(M_i)/dS \\
+%     \vdots  \\
+%     F(M_N)/dS
+%   \end{bmatrix}
+%     }_\text{Déplacements d'écrasement des surfaces}
+%   \end{split}
+% \end{equation}
+
+% \MyParagraph{Écart initiaux}
+
+% Enfin, la dernière inconnue de l'équation de compatibilité des déplacements est la définition des écarts initiaux. Pour rappels, ces écarts sont obtenus à l'étape 2 du processus (Figure \ref{fig:BM-cylamFlow}) et ils prennent en considération tous les écarts de formes de taillage, de rectification de la cinématique à vide lors de l’engrènement. Les écarts initiaux au point $i$ sont calculés via l'équation \ref{eq:BM-ecartsInitiaux}.
+
+% \begin{equation}\label{eq:BM-ecartsInitiaux}
+% ei_i=
+% \begin{bmatrix}
+%  x_P-x_{T} \\
+%  y_P-y_{T} \\
+%  z_P-z_{T} \\
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%   n_{x_{T}} \\
+%   n_{y_{T}} \\
+%   n_{z_{T}} \\
+% \end{bmatrix}
+% -
+% \begin{bmatrix}
+%  x_R-x_{T} \\
+%  y_R-y_{T} \\
+%  z_R-z_{T} \\
+% \end{bmatrix}
+% \cdot
+% \begin{bmatrix}
+%  n_{x_{T}} \\
+%  n_{y_{T}} \\
+%  n_{z_{T}} \\
+%  \end{bmatrix}
+% \end{equation}
+
+% \begin{Notations}{avec}
+%   \iNotation{M}{x_T,y_T,z_T}{Coordonnées d'un point du plan tangent}{}\\
+%   \iNotation{M}{x_P,  y_P, z_P}{Projection de ce point du plan tangent sur le pignon}{}\\
+%   \iNotation{M}{x_R,y_R,z_R}{Projection de ce point du plan tangent sur la roue}{}\\  \iNotation{M}{n_{x_{T}},n_{y_{T}},n_{z_{T}}}{Coordonnées de la normale au plan tangent}{}
+% \end{Notations}
+
+% Schématiquement, l’écart initial $ei_i$ correspond donc au segment normal au plan tangent au contact et passant par le point $i$ (Figure \ref{fig:BM-ecartsInitiaux}). Finalement, nous disposons de toutes les données nécessaires à la résolution du problème.
+
+% \Figure{0.99}{BM-ecartsInitiaux}{pdf}{Définition des écarts initiaux $ei_i$ au point $i$}{!htb}
+
+
+% \subsection{Exemple d'utilisation}
+
+% Ce paragraphe présente quelques-uns des résultats obtenus grâce au modèle numérique CYLAM décrit dans la section précédente. Les calculs sont effectués pour un engrenage cylindrique droit. La répartition de la charge au cours de l’engrènement montre l'alternance de la charge portée par les dents 1 et 2, tout en maintenant un effort global transmis constant (Figure \ref{fig:BM-exampleLoad}).
+
+% \Figure{0.81}{BM-exampleLoad}{pdf}{Répartition des charges}{!htb}
+
+% Le signal de l'erreur de transmission est en accord avec la répartition des charges (Figure \ref{fig:BM-exampleET}). En effet, lorsqu'une seule dent supporte l'intégralité de la charge, sa flexion et l'écrasement local sont plus importants et le signal de l'erreur de transmission est maximal. Les phases où les contacts se font sur les deux dents affichent quant à elles une erreur de transmission minimale. La moyenne du signal est représentée en traits d'unions.
+
+
+% Les pressions de contact maximales appliquées sur le flanc du pignon sont reproduites sur la figure \ref{fig:BM-examplePressure}. En toute logique, ce champ de pressions de contact est scindé en deux parties marquées par une forte différence de pression lors du passage d'un contact double à un contact simple.
+
+
+% Le temps de calcul est un élément clef lorsqu’il s'agit d'optimiser un engrenage, le nombre de calculs à générer étant relativement important. Le temps de calcul est fonction de la taille du maillage local, du nombre de positions cinématiques ainsi que de l'ordinateur de calcul employé. Ainsi, pour un maillage avec 10 points en largeur de dent, 10 points selon la hauteur et 23 positions cinématiques, le temps de calcul observé est d'environ 30 secondes sur un processeur Intel Xeon E5-2650 fréquencé à 2.20 GHz.
+
+% \Figure{0.81}{BM-exampleET}{pdf}{Signal d'erreur de transmission}{!h}
+% \Figure{0.99}{BM-examplePressure}{png}{Champ de pressions de contact sur le pignon}{!h}
