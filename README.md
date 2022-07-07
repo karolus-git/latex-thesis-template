@@ -4,6 +4,15 @@
 
 I'm happy to share with you the template I used during my thesis! At that time, I didn't kown anything about Docker... But now, everything is easy :)
 
+### Screenshots 
+
+<img src="assets/screenshot-frontpage.png" width="35%" height="35%" alt="Screenshot frontpage">
+<img src="assets/screenshot-acronyms.png" width="35%" height="35%" alt="Screenshot acronyms">
+<img src="assets/screenshot-page.png" width="35%" height="35%" alt="Screenshot page">
+<img src="assets/screenshot-chapter.png" width="35%" height="35%" alt="Screenshot chapter">
+
+### Table of contents 
+
 * Abstract
 * Acknowledgements
 * Tables
