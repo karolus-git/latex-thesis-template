@@ -24,6 +24,7 @@ elif [[ $1 == "compile" ]]; then
     find ./ -type f \( -name "*.log" -o -name "*.aux" -o -name "*.bcf" -o -name "*.ilg" -o -name "*.log" -o -name "*.maf" -o -name "*.mtc" -o -name "*.mtc0" -o -name "*.nlo"  -o -name "*.nls" -o -name "*.out" -o -name "*.bbl" -o -name "*.blg" -o -name "*.toc" -o -name "*.bak" -o -name "*.mtc1" -o -name "*.lof" -o -name "*.lot" \) -exec rm -rf {} \;
     
     docker exec -it thesis_latex_daemon bash -c 'pdflatex thesis.tex';
+    docker exec -it thesis_latex_daemon bash -c 'makeindex thesis.nlo -s nomencl.ist -o thesis.nls';
     docker exec -it thesis_latex_daemon bash -c 'biber thesis';
     docker exec -it thesis_latex_daemon bash -c 'pdflatex thesis.tex';
     docker exec -it thesis_latex_daemon bash -c 'pdflatex thesis.tex';
