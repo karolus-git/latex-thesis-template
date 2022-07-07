@@ -14,8 +14,7 @@
 \renewcommand{\nomname}{My acronyms and my notations} % Nomenclature
 \renewcommand{\listalgorithmname}{The list of algorithms} % Algorithms
 
-% Add an acronym to the notation table
-\newcommand{\MyAcronym}[2]{\nomenclature[A]{#1}{#2}{}}
+
 
 % Shortcut to print the absolute value and normal value
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -28,15 +27,33 @@
 %Create a paragraph title, underlined and bold
 \newcommand{\MyParagraph}[1]{\paragraph{\underline{#1}}\mbox{}\par}
 
+% Add an acronym to the notation table (as A (for Acronym))
+\newcommand{\MyAcronym}[2]{\nomenclature[A]{#1}{#2}{}}
+
+% Add a notation to the notation table (as N (for Notation))
+% If the third parameter is empty (no unit), we don't print the unit (logical...)
+\newcommand{\MyNotation}[3]{
+	\nomenclature[N]{$#1$}{\ifthenelse{\equal{#3}{}}{#2}{#2 en \si{#3}}}
+}
+
 % A description of the variables of an equation with units
-\newenvironment{MyNotation}[1]
+\newenvironment{MyNotationList}[1]
   {\noindent#1  : \small \par \begin{tabular}{rll}}
   {\end{tabular}\vspace{\baselineskip}}
 
-\newcommand{\MyNotationItem}[3]
+% An item of the NotationList and add it to the nomenclature
+\newcommand{\MyNotationListItem}[3]
 {
    $#1$ & #2 & in \si{#3}
+   \MyNotation{$#1$}{#2}{#3}
 }
+
+% Build two groups in the nomenclature, one for acronyms, the other for notations
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{N}{Notations}{%
+  \ifstrequal{#1}{A}{Acronyms}}%
+]}
 
 % Add bib files
 \addbibresource{biblio/bib-p1.bib}
